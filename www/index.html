@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html style="background-color= #2C3D54;">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Anna Computer Therapist</title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+
+  </head>
+
+  <body ng-controller="AuthCtrl">
+    <ion-pane>
+      <div ng-app="starter" ng-controller="AuthCtrl">
+        <div ng-show="firebaseUser" onload="start()">
+          <div>
+            <ion-header-bar class="bar-calm">
+              <h1 class="title">Talk to Anna</h1>
+            </ion-header-bar>
+            <ion-content>
+
+              <!-- Chat Console -->
+              <center>
+                <div class="list">
+                  <label class="item item-input">
+                    <textarea rows="15" id="log" disabled></textarea>
+                  </label>
+                  <label class="item item-input">
+                    <input type="text" id="msg" placeholder="Start chatting...">
+
+                  </label>
+                  <button type="button" class="button button-calm" onclick="send()">Send</button>
+                  <button type="button" class="button button-calm" ng-click="logout()">Sign Out</button>
+                </div>
+              </center>
+            </ion-content>
+          </div>
+        </div>
+        <div ng-hide="firebaseUser">
+          <center>
+            <img src="img/logo.png" style="width: 40%; height: 45%; padding-top: 20%;">
+            <h1 style="color: white; padding-bottom: 15%;">Anna Therapist<h1>
+          <div class="list list-inset">
+            <label class="item item-input">
+              <input type="text" ng-model="email" placeholder="Email">
+            </label>
+            <label class="item item-input">
+              <input type="password" ng-model="password" placeholder="Password">
+            </label>
+          </div>
+          <button class="button button-calm" ng-click="login()">Sign In</button>
+          <button class="button button-calm" ng-click="signup()">Sign Up</button><br><br><h6 style="color: white;">Did you forget your password?<h6>
+      </h6></h6></h1></h1></center></div>
+      </div>
+      
+    </ion-pane>
+    
+    <script src="js/script.js"></script>
+    
+  </body>
+</html>
